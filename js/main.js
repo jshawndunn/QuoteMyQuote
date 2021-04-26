@@ -1,19 +1,21 @@
+//grab needed elements
 let player1 = document.querySelector(".welcome__player1");
 let player2 = document.querySelector(".welcome__player2");
 let welcomeScreen = document.querySelector(".welcome");
 let gameScreen = document.querySelector('.game');
 
-player1.setAttribute("onclick", 'runGame(this)')
-player2.setAttribute("onclick", 'runGame(this)')
+//add click event to buttons to start game
+player1.setAttribute("onclick", 'runGame()')
+player2.setAttribute("onclick", 'runGame()')
 
 
-
+//main game loop
 function runGame(){
+    //grab need elements
     let currentQuote = document.querySelector(".game__current-quote");
     let playerInput = document.querySelector(".game__player-input");
+    //set current player input to an empty string
     playerInput.value = ""
-    
-    
     gameScreen.style.display = "block";
     welcomeScreen.style.display = "none";
     
