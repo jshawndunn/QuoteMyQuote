@@ -1,4 +1,4 @@
-fetch('https://thesimpsonsquoteapi.glitch.me/quotes?count=num20')
+fetch('https://thesimpsonsquoteapi.glitch.me/quotes?count=10')
     .then(function(responseData){
         return responseData.json()
     })
