@@ -3,8 +3,8 @@
 - [x] What are your goals for today?
 - [x] Do you have any blockers?
 1. Completed the proposal, set up template for project, implemented a fetch statement to pull down the quote data object.
-2. I would like get the main html page complete. Welome screen div able to hide when starting a game. Game div unhide when starting a game
-3. Just the wave of fear that initial hit the shore Friday when first asked to complete this project.
+2. I would like get the main html page skeleton complete. Welome screen div able to hide when starting a game. Game div unhide when starting a game.
+3. Just the wave of fear that initial hit my shore Friday when first asked to complete this project.
 
 # Monday
 - [x] What did you achieve yesterday?
