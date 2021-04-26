@@ -10,9 +10,12 @@
 - [x] What did you achieve yesterday?
 - [x] What are your goals for today?
 - [x] Do you have any blockers?
-1. RESPONSE
-2. RESPONSE
-3. RESPONSE
+1. Main HTML skeleton complete. One Player and Two Player buttons function. Game reset and restart buttons function. Current Quote Element displays the first element in the array. Player Input reads keypresses.
+2. Work on logic:
+    - on ENTER keypress figure out the correctly typed words and keep track of this number
+    - move on to next quote
+    - clear user input
+3. No blockers so far. Making sure I keep needed logic together is something I notice I need to really focus on.
 
 # Tuesday
 - [x] What did you achieve yesterday?
