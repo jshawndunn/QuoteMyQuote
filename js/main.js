@@ -1,18 +1,8 @@
-//grab needed elements
-let onePlayer = document.querySelector(".welcome__one-player");
-let twoPlayer = document.querySelector(".welcome__two-player");
-let currentQuote = document.querySelector(".game__current-quote");
-let playerInput = document.querySelector(".game__player-input");
-
-//add click event to buttons to start game
-onePlayer.setAttribute("onclick", 'runGame()')
-twoPlayer.setAttribute("onclick", 'runGame()')
-
-
 //set up starting variables
 let playerOnePosition = 0;
-let quotes = [];
-
+let playerOneScore = 0;
+const quotes = [];
+const playerOneOutput = [];
 
 //async function to grab quotes
 const getQuotes = async () => {
@@ -42,52 +32,84 @@ getQuotes()
      });
     });
 
+//grab needed elements
+let onePlayer = document.querySelector(".welcome__one-player");
+let twoPlayer = document.querySelector(".welcome__two-player");
+let currentQuote = document.querySelector(".game__current-quote");
+let playerInput = document.querySelector(".game__player-input");
+let welcomeScreen = document.querySelector(".welcome");
+let gameScreen = document.querySelector('.game');
+let quit = document.querySelector(".game__quit");
+let restart = document.querySelector(".game__restart");
+let scoreBox = document.querySelector(".game__wpm")
+
+
+//add click event to buttons to start game
+onePlayer.setAttribute("onclick", 'runGame()')
+twoPlayer.setAttribute("onclick", 'runGame()')
+
+//quit button
+quit.addEventListener("click", ()=>window.location.reload())
+
+//restart button
+restart.addEventListener("click", ()=>{
+    quotes.splice(0, quotes.length);
+    playerOneOutput.length = 0;
+    playerOnePosition = 0;
+    playerOneScore = 0;
+    playerInput.readOnly = false;
+
+    getQuotes()
+    .then(quote => {
+        quote.forEach(element => {
+            quotes.push(element)
+        });
+    });
+    getQuotes()
+    .then(quote => {
+        quote.forEach(element => {
+            quotes.push(element)
+        });
+        currentQuote.innerText = quotes[playerOnePosition]['quote']
+    });
+    playerInput.select();
+    setTimeout(endRound, 15000);
+})
+
+//comapre to strings
+function compareStrings(){
+    playerOneOutput.forEach((e,i) => {
+        let curQuote = quotes[i].quote.split(" ")
+        e.split(" ").forEach((e,i) => {
+            if(e === curQuote[i]) {
+                playerOneScore++
+            }
+        })
+    })
+    return (playerOneScore)
+}
+
 //round finish function
 function endRound(){
     console.log('game done!')
     playerInput.readOnly = true;
+    if(playerInput.value){
+        playerOneOutput.push(playerInput.value)
+    }
+    playerInput.value = ""
+    score = compareStrings();
+    scoreBox.innerHTML = score
 }
 
 
 
 //main game loop
 function runGame(){
-    setTimeout(endRound, 4000);
-    //grab need elements
-    let welcomeScreen = document.querySelector(".welcome");
-    let gameScreen = document.querySelector('.game');
-    //set current player input to an empty string
-    playerInput.value = ""
+    setTimeout(endRound, 60000);
     gameScreen.style.display = "flex";
     welcomeScreen.style.display = "none";
-    //array to hold results of typed quotes
-    const playerOneOutput = [];
+    playerInput.select();
 
-    //quit button
-    let quit = document.querySelector(".game__quit")
-    quit.addEventListener("click", ()=>window.location.reload())
-    //restart button
-    console.log(quotes)
-    let restart = document.querySelector(".game__restart")
-    restart.addEventListener("click", ()=>{
-        quotes = [];
-        playerOneOutput.length = 0;
-        playerOnePosition = 0;
-        getQuotes()
-            .then(quote => {
-                quote.forEach(element => {
-                    quotes.push(element)
-                    });
-            });
-        getQuotes()
-            .then(quote => {
-                quote.forEach(element => {
-                    quotes.push(element)
-                    });
-                currentQuote.innerText = quotes[playerOnePosition]['quote']
-            });
-        console.log(quotes)
-    })
     //actions when player hit enter
     playerInput.addEventListener('keyup', function(event) {
         if (event.code === 'Enter') {
