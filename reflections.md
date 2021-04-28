@@ -21,9 +21,9 @@
 - [x] What did you achieve yesterday?
 - [x] What are your goals for today?
 - [x] Do you have any blockers?
-1. RESPONSE
-2. RESPONSE
-3. RESPONSE
+1. capture player input, clear player input, display next quote. refactored fetch.
+2. compare user input to quote. set and display score based on correct word count. set and display 60 second timer on game. allow for second player
+3. No blockers today. Hoping to be done with core gameplay loop.
 
 # Wednesday
 - [x] What did you achieve yesterday?
