@@ -1,5 +1,19 @@
-//set up quotes array
+//grab needed elements
+let onePlayer = document.querySelector(".welcome__one-player");
+let twoPlayer = document.querySelector(".welcome__two-player");
+let currentQuote = document.querySelector(".game__current-quote");
+let playerInput = document.querySelector(".game__player-input");
+
+//add click event to buttons to start game
+onePlayer.setAttribute("onclick", 'runGame()')
+twoPlayer.setAttribute("onclick", 'runGame()')
+
+
+//set up starting variables
+let playerOnePosition = 0;
 let quotes = [];
+
+
 //async function to grab quotes
 const getQuotes = async () => {
     //response promise object
@@ -23,27 +37,25 @@ getQuotes()
     .then(quote => {
         quote.forEach(element => {
             quotes.push(element)
+            //print current quote to screen
+        currentQuote.innerText = quotes[playerOnePosition]['quote']
      });
     });
 
-
-//grab needed elements
-let onePlayer = document.querySelector(".welcome__one-player");
-let twoPlayer = document.querySelector(".welcome__two-player");
-
-//add click event to buttons to start game
-onePlayer.setAttribute("onclick", 'runGame()')
-twoPlayer.setAttribute("onclick", 'runGame()')
+//round finish function
+function endRound(){
+    console.log('game done!')
+    playerInput.readOnly = true;
+}
 
 
-let playerOnePosition = 0;
+
 //main game loop
 function runGame(){
+    setTimeout(endRound, 4000);
     //grab need elements
     let welcomeScreen = document.querySelector(".welcome");
     let gameScreen = document.querySelector('.game');
-    let currentQuote = document.querySelector(".game__current-quote");
-    let playerInput = document.querySelector(".game__player-input");
     //set current player input to an empty string
     playerInput.value = ""
     gameScreen.style.display = "flex";
@@ -51,8 +63,6 @@ function runGame(){
     //array to hold results of typed quotes
     const playerOneOutput = [];
 
-    //print current quote to screen
-    currentQuote.innerText = quotes[playerOnePosition]['quote']
     //quit button
     let quit = document.querySelector(".game__quit")
     quit.addEventListener("click", ()=>window.location.reload())
@@ -82,7 +92,6 @@ function runGame(){
     playerInput.addEventListener('keyup', function(event) {
         if (event.code === 'Enter') {
             playerOneOutput.push(playerInput.value)
-            console.log(quotes)
             playerInput.value = ""
             playerOnePosition++
             currentQuote.innerText = quotes[playerOnePosition]['quote']
