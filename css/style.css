@@ -1,3 +1,8 @@
+body{
+    font-family: 'Merriweather', serif;
+    background-color: #d1b271;
+}
+
 .game{
     display: none;
     height: 100vh;
@@ -41,4 +46,24 @@
 .game__card{
     display: flex;
     height: 200px;
+    border: 5px solid #fed90f;
+    border-radius: 10px;
+    background-color: #70d1fe;
+    margin-bottom: 3em;
+    -webkit-box-shadow: 5px 5px 15px 5px #00000052; 
+    box-shadow: 5px 5px 15px 5px #00000052;
+}
+
+input{
+    border: 5px solid #fed90f;
+    border-radius: 10px;
+    background-color: #70d1fe;
+    margin-bottom: 3em;
+    -webkit-box-shadow: 5px 5px 15px 5px #00000052; 
+    box-shadow: 5px 5px 15px 5px #00000052;
+    outline: none;
+}
+
+.game__card-text{
+    margin: 2em;
 }
