@@ -33,8 +33,7 @@ getQuotes()
     });
 
 //grab needed elements
-let onePlayer = document.querySelector(".welcome__one-player");
-let twoPlayer = document.querySelector(".welcome__two-player");
+let start = document.querySelector(".welcome__start");
 let currentQuote = document.querySelector(".game__current-quote");
 let playerInput = document.querySelector(".game__player-input");
 let welcomeScreen = document.querySelector(".welcome");
@@ -45,8 +44,7 @@ let scoreBox = document.querySelector(".game__wpm")
 
 
 //add click event to buttons to start game
-onePlayer.setAttribute("onclick", 'runGame()')
-twoPlayer.setAttribute("onclick", 'runGame()')
+start.setAttribute("onclick", 'runGame()')
 
 //quit button
 quit.addEventListener("click", ()=>window.location.reload())
@@ -58,6 +56,7 @@ restart.addEventListener("click", ()=>{
     playerOnePosition = 0;
     playerOneScore = 0;
     playerInput.readOnly = false;
+    scoreBox.innerHTML = 'WPM';
 
     getQuotes()
     .then(quote => {
@@ -73,7 +72,7 @@ restart.addEventListener("click", ()=>{
         currentQuote.innerText = quotes[playerOnePosition]['quote']
     });
     playerInput.select();
-    setTimeout(endRound, 15000);
+    setTimeout(endRound, 60000);
 })
 
 //comapre to strings
@@ -91,7 +90,6 @@ function compareStrings(){
 
 //round finish function
 function endRound(){
-    console.log('game done!')
     playerInput.readOnly = true;
     if(playerInput.value){
         playerOneOutput.push(playerInput.value)

@@ -29,9 +29,9 @@
 - [x] What did you achieve yesterday?
 - [x] What are your goals for today?
 - [x] Do you have any blockers?
-1. RESPONSE
-2. RESPONSE
-3. RESPONSE
+1. Completed game functionality. Tested game. Started adding CSS
+2. Add some nicer font. Adjust spacing of elements onscreen. Stretch would be to be able to make a card for the quote image, quote, and person speaking
+3. I went to use the Bulma framework and felt it was overriding some of the settings I currently had working. I decided to just use flexbox and start my HTML with Bulma next project.
 
 # Thursday
 - [x] What did you achieve yesterday?
