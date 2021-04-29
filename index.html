@@ -21,9 +21,7 @@
     <!-- Main Game Page -->
     <div class="game">
         <!-- Left Column. Holds Completed Quotes -->
-        <div class="game__left-side">
-            <p class="game__completed-quote">Completed Quotes</p>
-        </div>
+        <div class="game__left-side"></div>
         <!-- Center Column. Holds Current Quote and Player Input-->
         <div class="game__main">
             <!-- <p class="game__current-quote"></p> -->
@@ -38,7 +36,10 @@
         </div>
         <!-- Right Column. Holds timer/score and button options -->
         <div class="game__right-side">
-            <div class="game__wpm">WPM</div>
+            <div class="game__score-card">
+                <h4><span class="game__running-score">Current</span> WPM:</h4>
+                <p class="game__score"></p>
+            </div>
             <div class="game__options">
                 <!-- Resets current game to play again -->
                 <button class="game__restart">Restart</button>

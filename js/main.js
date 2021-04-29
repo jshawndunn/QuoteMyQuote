@@ -42,13 +42,15 @@ let start = document.querySelector(".welcome__start");
 let currentQuoteCharacter = document.querySelector(".game__character");
 let currentQuoteImage = document.querySelector(".game__quote-image");
 let currentQuote = document.querySelector(".game__quote");
+let completedQuotes = document.querySelector(".game__left-side");
 let playerInput = document.querySelector(".game__player-input");
 let welcomeScreen = document.querySelector(".welcome");
 let gameScreen = document.querySelector('.game');
 let quit = document.querySelector(".game__quit");
 let restart = document.querySelector(".game__restart");
-let scoreBox = document.querySelector(".game__wpm")
-
+let scoreBox = document.querySelector(".game__score")
+let runningTotal = document.querySelector(".game__running-score")
+let gameCard = document.querySelector(".game__card")
 
 //add click event to buttons to start game
 start.setAttribute("onclick", 'runGame()')
@@ -63,7 +65,9 @@ restart.addEventListener("click", ()=>{
     playerOnePosition = 0;
     playerOneScore = 0;
     playerInput.readOnly = false;
-    scoreBox.innerHTML = 'WPM';
+    scoreBox.innerHTML = '';
+    runningTotal.innerHTML = "Current";
+    completedQuotes.innerHTML = ""
 
     getQuotes()
     .then(quote => {
@@ -79,7 +83,7 @@ restart.addEventListener("click", ()=>{
         displayQuotes()
     });
     playerInput.select();
-    setTimeout(endRound, 60000);
+    setTimeout(endRound, 6000);
 })
 
 //comapre to strings
@@ -104,23 +108,27 @@ function endRound(){
     playerInput.value = ""
     score = compareStrings();
     scoreBox.innerHTML = score
+    runningTotal.innerHTML = "Final"
 }
 
 
 
+function nextQuote() {
+    playerOneOutput.push(playerInput.value)
+    let clonedQuote = gameCard.cloneNode(true)
+    completedQuotes.appendChild(clonedQuote)
+    playerInput.value = ""
+    playerOnePosition++
+    displayQuotes()
+};
+
 //main game loop
 function runGame(){
-    setTimeout(endRound, 60000);
+    setTimeout(endRound, 6000);
     gameScreen.style.display = "flex";
     welcomeScreen.style.display = "none";
     playerInput.select();
 
-    function nextQuote() {
-        playerOneOutput.push(playerInput.value)
-        playerInput.value = ""
-        playerOnePosition++
-        displayQuotes()
-    };
 
     //actions when player hit enter
     playerInput.addEventListener('keyup', function(event) {

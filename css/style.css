@@ -40,9 +40,17 @@ body{
     justify-content: flex-start;
     align-items: center;
     height: 100vh;
-    width: 25vw;
+    width: 20vw;
+    
 }
-
+.game__left-side .game__quote-image{
+    height: 100px;
+}
+.game__left-side .game__card{
+    height: auto;
+    width: 250px;
+    font-size: .5em;
+}
 .game__card{
     display: flex;
     height: 200px;
@@ -55,15 +63,34 @@ body{
 }
 
 input{
-    border: 5px solid #fed90f;
+    border: 2px solid #424f46;
     border-radius: 10px;
-    background-color: #70d1fe;
     margin-bottom: 3em;
     -webkit-box-shadow: 5px 5px 15px 5px #00000052; 
     box-shadow: 5px 5px 15px 5px #00000052;
     outline: none;
+    line-height: 2em;
+    font-size: 2em;
 }
 
+button {
+    border: 2px solid #424f46;
+    border-radius: 5px;
+}
 .game__card-text{
     margin: 2em;
+}
+.game__score-card{
+    display:flex;
+    flex-direction: column;
+    border: 2px solid #424f46;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    height: 200px;
+    width: 200px;
+    align-items: center;
+}
+.game__score{
+    font-size: 2em;
+    margin-top: -2px;
 }
