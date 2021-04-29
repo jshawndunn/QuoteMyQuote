@@ -32,10 +32,11 @@ getQuotes()
      });
     });
 
+//disply quotes to screen
 function displayQuotes() {
     currentQuoteImage.setAttribute('src', quotes[playerOnePosition]['image'])
     currentQuote.innerText = quotes[playerOnePosition]['quote']
-    currentQuoteCharacter.innerText = quotes[playerOnePosition]['character']
+    currentQuoteCharacter.innerText = "--" + quotes[playerOnePosition]['character']
 }
 //grab needed elements
 let start = document.querySelector(".welcome__start");
@@ -48,9 +49,10 @@ let welcomeScreen = document.querySelector(".welcome");
 let gameScreen = document.querySelector('.game');
 let quit = document.querySelector(".game__quit");
 let restart = document.querySelector(".game__restart");
-let scoreBox = document.querySelector(".game__score")
-let runningTotal = document.querySelector(".game__running-score")
-let gameCard = document.querySelector(".game__card")
+let scoreBox = document.querySelector(".game__score");
+let runningTotal = document.querySelector(".game__running-score");
+let gameCard = document.querySelector(".game__card");
+let scoreCard = document.querySelector(".game__score-card")
 
 //add click event to buttons to start game
 start.setAttribute("onclick", 'runGame()')
@@ -68,7 +70,7 @@ restart.addEventListener("click", ()=>{
     scoreBox.innerHTML = '';
     runningTotal.innerHTML = "Current";
     completedQuotes.innerHTML = ""
-
+    scoreCard.display = "none"
     getQuotes()
     .then(quote => {
         quote.forEach(element => {
@@ -83,10 +85,10 @@ restart.addEventListener("click", ()=>{
         displayQuotes()
     });
     playerInput.select();
-    setTimeout(endRound, 6000);
+    setTimeout(endRound, 10000);
 })
 
-//comapre to strings
+//comapre two strings
 function compareStrings(){
     playerOneOutput.forEach((e,i) => {
         let curQuote = quotes[i].quote.split(" ")
@@ -99,7 +101,7 @@ function compareStrings(){
     return (playerOneScore)
 }
 
-//round finish function
+//game end
 function endRound(){
     playerInput.readOnly = true;
     if(playerInput.value){
@@ -107,12 +109,12 @@ function endRound(){
     }
     playerInput.value = ""
     score = compareStrings();
+    scoreCard.style.display = "flex"
     scoreBox.innerHTML = score
     runningTotal.innerHTML = "Final"
 }
 
-
-
+//moves current quote to the left hand side
 function nextQuote() {
     playerOneOutput.push(playerInput.value)
     let clonedQuote = gameCard.cloneNode(true)
@@ -124,7 +126,7 @@ function nextQuote() {
 
 //main game loop
 function runGame(){
-    setTimeout(endRound, 6000);
+    setTimeout(endRound, 10000);
     gameScreen.style.display = "flex";
     welcomeScreen.style.display = "none";
     playerInput.select();
