@@ -28,13 +28,20 @@ getQuotes()
         quote.forEach(element => {
             quotes.push(element)
             //print current quote to screen
-        currentQuote.innerText = quotes[playerOnePosition]['quote']
+           displayQuotes()
      });
     });
 
+function displayQuotes() {
+    currentQuoteImage.setAttribute('src', quotes[playerOnePosition]['image'])
+    currentQuote.innerText = quotes[playerOnePosition]['quote']
+    currentQuoteCharacter.innerText = quotes[playerOnePosition]['character']
+}
 //grab needed elements
 let start = document.querySelector(".welcome__start");
-let currentQuote = document.querySelector(".game__current-quote");
+let currentQuoteCharacter = document.querySelector(".game__character");
+let currentQuoteImage = document.querySelector(".game__quote-image");
+let currentQuote = document.querySelector(".game__quote");
 let playerInput = document.querySelector(".game__player-input");
 let welcomeScreen = document.querySelector(".welcome");
 let gameScreen = document.querySelector('.game');
@@ -69,7 +76,7 @@ restart.addEventListener("click", ()=>{
         quote.forEach(element => {
             quotes.push(element)
         });
-        currentQuote.innerText = quotes[playerOnePosition]['quote']
+        displayQuotes()
     });
     playerInput.select();
     setTimeout(endRound, 60000);
@@ -108,13 +115,17 @@ function runGame(){
     welcomeScreen.style.display = "none";
     playerInput.select();
 
+    function nextQuote() {
+        playerOneOutput.push(playerInput.value)
+        playerInput.value = ""
+        playerOnePosition++
+        displayQuotes()
+    };
+
     //actions when player hit enter
     playerInput.addEventListener('keyup', function(event) {
         if (event.code === 'Enter') {
-            playerOneOutput.push(playerInput.value)
-            playerInput.value = ""
-            playerOnePosition++
-            currentQuote.innerText = quotes[playerOnePosition]['quote']
+           nextQuote()
         }
     })
 }
