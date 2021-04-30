@@ -37,9 +37,9 @@
 - [x] What did you achieve yesterday?
 - [x] What are your goals for today?
 - [x] Do you have any blockers?
-1. RESPONSE
-2. RESPONSE
-3. RESPONSE
+1. Finished Game.
+2. Bug search.
+3. Nope.
 
 # Friday
 - [x] What did you achieve yesterday?
@@ -49,3 +49,8 @@
 2. RESPONSE
 3. RESPONSE
 
+1. What HTML, CSS, and or JavaScript skills you learned while building your game?
+    I feel I understand fetch a lot better.
+
+2. What's one topic you want to spend more practice on?
+    I still would like to practice moving things around the screen.
