@@ -70,7 +70,7 @@ restart.addEventListener("click", ()=>{
     scoreBox.innerHTML = '';
     runningTotal.innerHTML = "Current";
     completedQuotes.innerHTML = ""
-    scoreCard.display = "none"
+    scoreCard.style.visibility = "hidden"
     getQuotes()
     .then(quote => {
         quote.forEach(element => {
@@ -85,7 +85,7 @@ restart.addEventListener("click", ()=>{
         displayQuotes()
     });
     playerInput.select();
-    setTimeout(endRound, 10000);
+    setTimeout(endRound, 15000);
 })
 
 //comapre two strings
@@ -108,8 +108,9 @@ function endRound(){
         playerOneOutput.push(playerInput.value)
     }
     playerInput.value = ""
-    score = compareStrings();
+    score = compareStrings() * 4;
     scoreCard.style.display = "flex"
+    scoreCard.style.visibility = "visible"
     scoreBox.innerHTML = score
     runningTotal.innerHTML = "Final"
 }
@@ -126,7 +127,7 @@ function nextQuote() {
 
 //main game loop
 function runGame(){
-    setTimeout(endRound, 10000);
+    setTimeout(endRound, 15000);
     gameScreen.style.display = "flex";
     welcomeScreen.style.display = "none";
     playerInput.select();
