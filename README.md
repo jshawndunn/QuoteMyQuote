@@ -6,7 +6,7 @@
 
 # HOW TO PLAY
 
-### Simply type out each quote and hit enter when you are done. After 60 seconds, you score will be displayed.
+### Simply type out each quote and hit enter when you are done. After 15 seconds, your score will be displayed.
 
 ![play screen](./readmeImages/GamePlay.png)
 
