@@ -20,9 +20,6 @@
 2. Open `index.html` in your browser to play or 
 3. [QuoteMyQote](https://jshawndunn.github.io/QuoteMyQuote/) to play
 
-Other install instructions will go here
-
-
 # HOW IT WORKS
 The core game pulls down data from https://thesimpsonsquoteapi.glitch.me/
 
